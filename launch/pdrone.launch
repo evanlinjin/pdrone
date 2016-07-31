@@ -1,0 +1,13 @@
+<launch>
+
+<!--
+<node name="main_node" pkg="pdrone" type="main_node" respawn="true" respawn_delay="2" />
+-->
+
+<node name="ground_node" pkg="pdrone" type="ground_node" respawn="true" output="screen">
+    <param name="error" value="0" type="int" />
+    <param name="kp" value="2000" type="int" />
+    <param name="loop_freq" value="9" type="int" />
+</node>
+
+</launch>
