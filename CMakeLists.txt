@@ -102,8 +102,8 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES pdrone
+#  INCLUDE_DIRS include
+#  LIBRARIES pdrone
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -122,7 +122,6 @@ include_directories(
 
 ## Declare a C++ library
 set(PDRONE_LIB_SRC
-  include/pdrone/GPIO.cpp
   include/pdrone/GPIO_IN.cpp
   include/pdrone/GPIO_OUT.cpp
   include/pdrone/PWM.cpp
@@ -168,7 +167,7 @@ target_link_libraries(ground_node ${catkin_LIBRARIES} pdrone)
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS pdrone main_node ground_node
+install(TARGETS pdrone ##main_node ground_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

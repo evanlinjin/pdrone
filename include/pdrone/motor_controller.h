@@ -3,11 +3,14 @@
 
 #include "PWM.h"
 #include "GPIO_OUT.h"
+#include "initiate.h"
 #include <unistd.h>
 #include <ros/ros.h>
 #include <time.h>
 #include <pdrone/SetGround.h>
 #include <std_msgs/Bool.h>
+
+using namespace std;
 
 class MotorController {
 public:
@@ -64,6 +67,9 @@ private:
 // DEFINITIONS : MotorController >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 MotorController::MotorController(uint n_bk0, uint n_bk1, uint n_pwmchip, uint period_pwm) {
+    // ensure dto file is enabled.
+    init_dto();
+
     this->period = period_pwm;
     dir[0] = 1; dir[1] = 1;
     BK0 = new GPIO_OUT(n_bk0);

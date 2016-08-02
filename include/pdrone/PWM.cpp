@@ -10,9 +10,12 @@ PWM::PWM(uint n_chip, uint period) {
 	cout << "PATH: " << this->path << endl;
 
 	// ENABLE PINS >>
-	write(this->path, "export", 0);
-	write(this->path, "export", 1);
-	usleep(50000);
+	short is_okay[2] = {-1, -1};
+	while (is_okay[0] == -1 || is_okay[1] == -1) {
+		is_okay[0] = write(this->path, "export", 0);
+		is_okay[1] = write(this->path, "export", 1);
+		usleep(50000);
+	}
 
 	// PERMISSIONS :
 	system("sudo chown -R root:gpio /sys/class/pwm");
